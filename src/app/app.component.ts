@@ -18,6 +18,6 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.store.dispatch(getCurrentWeatherRequestStarted());
+    // this.store.dispatch(getCurrentWeatherRequestStarted());
   }
 }
