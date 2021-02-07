@@ -23,7 +23,7 @@ export class WeatherService {
     return this.http.get<ForecastResponse>(
       `${environment.weatherApiUrl}/forecast?q=${
         city ? city : 'Amsterdam'
-      }&cnt=5&units=metric&lang=nl&appid=${environment.weatherApiKey}`
+      }&cnt=30&units=metric&lang=nl&appid=${environment.weatherApiKey}`
     );
   }
 }

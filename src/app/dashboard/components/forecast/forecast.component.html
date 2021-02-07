@@ -7,7 +7,7 @@
 
     <ng-template #highlights>
         
-        <div class="flex -mx-4">
+        <div class="flex -mx-4 overflow-x-auto">
             <div 
             *ngFor="let weather of forecast$ | async" 
             (click)="onSelect(weather)"

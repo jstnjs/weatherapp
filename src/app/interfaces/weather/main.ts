@@ -1,4 +1,3 @@
-// @todo: might rename this
 export interface Main {
     temp: number;
     feels_like: number;
