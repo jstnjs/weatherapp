@@ -1,7 +1,4 @@
-import { stagger, state } from '@angular/animations';
 import { createReducer, on, Action } from '@ngrx/store';
-
-import { CurrentWeather } from 'src/app/interfaces/weather/current-weather';
 import {
     getCurrentWeatherRequestStarted,
     getCurrentWeatherRequestSuccess,
