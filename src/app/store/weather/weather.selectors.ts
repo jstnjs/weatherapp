@@ -8,6 +8,11 @@ export const getCurrentWeather = createSelector(
     state => state.currentWeather,
 )
 
+export const getLocation = createSelector(
+    getWeatherState,
+    state => state.location,
+)
+
 export const isLoading = createSelector(
     getWeatherState,
     state => state.isLoading,

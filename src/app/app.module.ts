@@ -12,6 +12,10 @@ import { WeatherStoreModule } from './store/weather/weather.store.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForecastComponent } from './dashboard/components/forecast/forecast.component';
 import { TodayComponent } from './dashboard/components/today/today.component';
+import { SearchLocationComponent } from './dashboard/components/search-location/search-location.component';
+import { FormsModule } from '@angular/forms';
+import { WeatherDetailsComponent } from './dashboard/components/weather-details/weather-details.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +23,8 @@ import { TodayComponent } from './dashboard/components/today/today.component';
     DashboardComponent,
     ForecastComponent,
     TodayComponent,
+    SearchLocationComponent,
+    WeatherDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +34,7 @@ import { TodayComponent } from './dashboard/components/today/today.component';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
     WeatherStoreModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

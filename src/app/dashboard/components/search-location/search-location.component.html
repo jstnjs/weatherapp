@@ -1,0 +1,6 @@
+<form (submit)="onSubmit()" class="mx-10 flex rounded-md shadow-sm mb-10">
+    <input type="text" class="flex-1 py-2 px-2 block w-full focus-none rounded-none rounded-l-md bg-gray-50 border border-r-0 border-gray-300" [value]="location$ | async" (input)="onInput(locationField.value)" placeholder="Amsterdam" #locationField>
+    <button type="submit" class="inline-flex items-center px-3 rounded-r-md border border-gray-300 bg-gray-50 text-gray-500 text-sm">
+        Search
+    </button>
+</form>
