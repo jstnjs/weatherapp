@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CurrentWeather } from 'src/app/interfaces/weather/current-weather';
+import { Weather } from 'src/app/interfaces/weather/weather';
 import { getCurrentWeatherRequestStarted } from 'src/app/store/weather/weather.actions';
-import { getCurrentWeather, isLoading, getLocation, getError } from 'src/app/store/weather/weather.selectors';
+import { getCurrentWeather, isLoading, getError } from 'src/app/store/weather/weather.selectors';
 import { WeatherState } from 'src/app/store/weather/weather.state';
 
 @Component({
@@ -14,7 +14,7 @@ import { WeatherState } from 'src/app/store/weather/weather.state';
 })
 export class TodayComponent implements OnInit {
 
-  currentWeather$: Observable<CurrentWeather>;
+  currentWeather$: Observable<Weather>;
   isLoading$: Observable<boolean>;
   error$: Observable<string>;
 

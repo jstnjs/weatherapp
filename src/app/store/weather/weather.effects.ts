@@ -9,12 +9,16 @@ import {
   delay,
   withLatestFrom,
 } from 'rxjs/operators';
-import { CurrentWeather } from 'src/app/interfaces/weather/current-weather';
+import { ForecastResponse } from 'src/app/interfaces/responses/forecast-response';
+import { Weather } from 'src/app/interfaces/weather/weather';
 import { WeatherService } from 'src/app/services/weather.service';
 import {
   getCurrentWeatherRequestFailed,
   getCurrentWeatherRequestStarted,
   getCurrentWeatherRequestSuccess,
+  getForecastRequestFailed,
+  getForecastRequestStarted,
+  getForecastRequestSuccess,
 } from './weather.actions';
 import { getLocation } from './weather.selectors';
 import { WeatherState } from './weather.state';
@@ -34,11 +38,29 @@ export class WeatherEffects {
       mergeMap(([action, location]) =>
         this.weatherService.getCurrentWeather(location).pipe(
           delay(1000),
-          map((payload: CurrentWeather) => {
+          map((payload: Weather) => {
             return getCurrentWeatherRequestSuccess({ currentWeather: payload });
           }),
           catchError(() => {
             return of(getCurrentWeatherRequestFailed());
+          })
+        )
+      )
+    )
+  );
+
+  getForecast$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getForecastRequestStarted.type),
+      withLatestFrom(this.store.select(getLocation)),
+      mergeMap(([action, location]) =>
+        this.weatherService.getForecast(location).pipe(
+          delay(1000),
+          map((payload: ForecastResponse) => {
+            return getForecastRequestSuccess({ forecast: payload.list });
+          }),
+          catchError(() => {
+            return of(getForecastRequestFailed());
           })
         )
       )

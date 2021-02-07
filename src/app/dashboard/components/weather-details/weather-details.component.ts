@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CurrentWeather } from 'src/app/interfaces/weather/current-weather';
+import { Weather } from 'src/app/interfaces/weather/weather';
 
 @Component({
   selector: 'app-weather-details',
@@ -8,7 +8,7 @@ import { CurrentWeather } from 'src/app/interfaces/weather/current-weather';
 })
 export class WeatherDetailsComponent implements OnInit {
 
-  @Input() weatherDetail: CurrentWeather;
+  @Input() weatherDetail: Weather;
 
   constructor() { }
 

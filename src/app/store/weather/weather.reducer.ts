@@ -3,6 +3,9 @@ import {
     getCurrentWeatherRequestFailed,
     getCurrentWeatherRequestStarted,
     getCurrentWeatherRequestSuccess,
+    getForecastRequestFailed,
+    getForecastRequestStarted,
+    getForecastRequestSuccess,
     updateSearchLocation,
 } from './weather.actions';
 import { WeatherState } from './weather.state';
@@ -12,6 +15,7 @@ export const initialState: WeatherState = {
     error: null,
     location: '',
     currentWeather: null,
+    forecast: [],
 };
 
 export const weatherReducer = createReducer(
@@ -36,7 +40,28 @@ export const weatherReducer = createReducer(
             isLoading: false,
             error: 'Er is iets misgegaan, probeer het later opnieuw!',
         };
-    }),    
+    }),
+    on(getForecastRequestStarted, state => {
+        return {
+            ...state,
+            isLoading: true,
+        };
+    }),
+    on(getForecastRequestSuccess, (state, { forecast }) => {
+        return {
+            ...state,
+            forecast,
+            isLoading: false,
+            error: null,
+        };
+    }),
+    on(getForecastRequestFailed, (state) => {
+        return {
+            ...state,
+            isLoading: false,
+            error: 'Er is iets misgegaan, probeer het later opnieuw!',
+        };
+    }),     
     on(updateSearchLocation, (state, { location }) => {
         return {
             ...state,

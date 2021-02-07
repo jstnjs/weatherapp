@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import {
@@ -15,6 +15,7 @@ import { WeatherState } from 'src/app/store/weather/weather.state';
 })
 export class SearchLocationComponent implements OnInit {
   location$: Observable<string>;
+  @Output() submitLocation = new EventEmitter<void>();
 
   constructor(private store: Store<{ state: WeatherState }>) {
     this.location$ = store.select(getLocation);
@@ -27,6 +28,6 @@ export class SearchLocationComponent implements OnInit {
   }
 
   onSubmit() {
-    this.store.dispatch(getCurrentWeatherRequestStarted());
+    this.submitLocation.emit();
   }
 }
