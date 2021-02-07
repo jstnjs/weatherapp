@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { EMPTY, of } from 'rxjs';
+import { of } from 'rxjs';
 import {
   map,
   mergeMap,
@@ -9,8 +9,8 @@ import {
   delay,
   withLatestFrom,
 } from 'rxjs/operators';
+import { CurrentWeatherResponse } from 'src/app/interfaces/responses/current-weather-response';
 import { ForecastResponse } from 'src/app/interfaces/responses/forecast-response';
-import { Weather } from 'src/app/interfaces/weather/weather';
 import { WeatherService } from 'src/app/services/weather.service';
 import {
   getCurrentWeatherRequestFailed,
@@ -38,8 +38,16 @@ export class WeatherEffects {
       mergeMap(([action, location]) =>
         this.weatherService.getCurrentWeather(location).pipe(
           delay(1000),
-          map((payload: Weather) => {
-            return getCurrentWeatherRequestSuccess({ currentWeather: payload });
+          map((payload: CurrentWeatherResponse) => {
+            return getCurrentWeatherRequestSuccess({ 
+              currentWeather: {
+                weather: payload.weather,
+                main: payload.main,
+                wind: payload.wind,
+                clouds: payload.clouds,
+                dt: payload.dt,
+              }
+            });
           }),
           catchError(() => {
             return of(getCurrentWeatherRequestFailed());

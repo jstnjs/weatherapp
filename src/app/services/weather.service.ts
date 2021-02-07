@@ -2,9 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { CurrentWeatherResponse } from '../interfaces/responses/current-weather-response';
 import { ForecastResponse } from '../interfaces/responses/forecast-response';
-
-import { Weather } from '../interfaces/weather/weather';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +11,8 @@ import { Weather } from '../interfaces/weather/weather';
 export class WeatherService {
   constructor(private http: HttpClient) {}
 
-  getCurrentWeather(city: string): Observable<Weather> {
-    return this.http.get<Weather>(
+  getCurrentWeather(city: string): Observable<CurrentWeatherResponse> {
+    return this.http.get<CurrentWeatherResponse>(
       `${environment.weatherApiUrl}/weather?q=${
         city ? city : 'Amsterdam'
       }&units=metric&lang=nl&appid=${environment.weatherApiKey}`
