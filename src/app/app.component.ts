@@ -12,12 +12,4 @@ import { WeatherState } from './store/weather/weather.state';
 
 export class AppComponent {
   title = 'weatherapp';
-
-  constructor(private store: Store<{ currentWeather: WeatherState}>) {
-
-  }
-
-  ngOnInit() {
-    // this.store.dispatch(getCurrentWeatherRequestStarted());
-  }
 }

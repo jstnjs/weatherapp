@@ -10,11 +10,15 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { WeatherStoreModule } from './store/weather/weather.store.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForecastComponent } from './dashboard/components/forecast/forecast.component';
+import { TodayComponent } from './dashboard/components/today/today.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    ForecastComponent,
+    TodayComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
-    WeatherStoreModule
+    WeatherStoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

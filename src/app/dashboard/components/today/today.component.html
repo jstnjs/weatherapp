@@ -1,0 +1,66 @@
+<div *ngIf="(isLoading | async); else elseBlock">Loading......</div>
+<ng-template #elseBlock>
+
+    <h2 class="text-3xl font-bold leading-tight text-gray-900 my-10">
+        Highlights
+    </h2>
+    
+    <div class="flex flex-wrap w-3/4 -mx-4">
+        <div class="px-4 mb-8">
+            <div class="bg-white w-60 h-48 rounded-lg shadow-sm py-3 px-6 flex flex-col">
+                <div class="text-gray-400 font-semibold">Temperatuur</div>
+                <div class="text-6xl font-bold flex-1 flex items-center justify-center">
+                    {{ currentWeather.main.temp | number:'1.0-0' }}<sup>°C</sup>
+                </div>
+            </div>
+        </div>
+        <div class="px-4 mb-8">
+            <div class="bg-white w-60 h-48 rounded-lg shadow-sm py-3 px-6 flex flex-col">
+                <div class="text-gray-400 font-semibold">Gevoelstemperatuur</div>
+                <div class="text-6xl font-bold flex-1 flex items-center justify-center">
+                    {{ currentWeather.main.feels_like | number:'1.0-0' }}<sup>°C</sup>
+                </div>
+            </div>
+        </div>
+        <div class="px-4 mb-8">
+            <div class="bg-white w-60 h-48 rounded-lg shadow-sm py-3 px-6 flex flex-col">
+                <div class="text-gray-400 font-semibold">Temperatuur min</div>
+                <div class="text-6xl font-bold flex-1 flex items-center justify-center">
+                    {{ currentWeather.main.temp_min | number:'1.0-0' }}<sup>°C</sup>
+                </div>
+            </div>
+        </div>
+        <div class="px-4 mb-8">
+            <div class="bg-white w-60 h-48 rounded-lg shadow-sm py-3 px-6 flex flex-col">
+                <div class="text-gray-400 font-semibold">Temperatuur max</div>
+                <div class="text-6xl font-bold flex-1 flex items-center justify-center">
+                    {{ currentWeather.main.temp_max | number:'1.0-0' }}<sup>°C</sup>
+                </div>
+            </div>
+        </div>
+        <div class="px-4">
+            <div class="bg-white w-60 h-48 rounded-lg shadow-sm py-3 px-6 flex flex-col">
+                <div class="text-gray-400 font-semibold">Windsnelheid</div>
+                <div class="text-6xl font-bold flex-1 flex items-center justify-center">
+                    {{ currentWeather.wind.speed }}m/s
+                </div>
+            </div>
+        </div>
+        <div class="px-4">
+            <div class="bg-white w-60 h-48 rounded-lg shadow-sm py-3 px-6 flex flex-col">
+                <div class="text-gray-400 font-semibold">Windrichting</div>
+                <div class="text-6xl font-bold flex-1 flex items-center justify-center">
+                    {{ currentWeather.wind.deg }}<sup>°</sup>
+                </div>
+            </div>
+        </div>
+        <div class="px-4">
+            <div class="bg-white w-60 h-48 rounded-lg shadow-sm py-3 px-6 flex flex-col">
+                <div class="text-gray-400 font-semibold">Luchtvochtigheid</div>
+                <div class="text-6xl font-bold flex-1 flex items-center justify-center">
+                    {{ currentWeather.main.humidity }}%
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

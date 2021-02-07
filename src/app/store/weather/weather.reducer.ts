@@ -1,10 +1,16 @@
+import { stagger, state } from '@angular/animations';
 import { createReducer, on, Action } from '@ngrx/store';
 
 import { CurrentWeather } from 'src/app/interfaces/weather/current-weather';
-import { getCurrentWeatherRequestSuccess } from './weather.actions';
+import {
+    getCurrentWeatherRequestStarted,
+    getCurrentWeatherRequestSuccess,
+} from './weather.actions';
 import { WeatherState } from './weather.state';
 
 export const initialState: WeatherState = {
+    isLoading: false,
+    location: 'Amsterdam',
     currentWeather: {
         coord: {
             lat: 0,
@@ -44,6 +50,18 @@ export const initialState: WeatherState = {
 };
 
 export const weatherReducer = createReducer(
-  initialState,
-  on(getCurrentWeatherRequestSuccess, (state, { currentWeather }) => ({ ...state, currentWeather })),
+    initialState,
+    on(getCurrentWeatherRequestStarted, state => {
+        return {
+            ...state,
+            isLoading: true,
+        };
+    }),
+    on(getCurrentWeatherRequestSuccess, (state, { currentWeather }) => {
+        return {
+            ...state,
+            currentWeather,
+            isLoading: false,
+        };
+    })
 );
