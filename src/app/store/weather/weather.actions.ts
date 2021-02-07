@@ -4,6 +4,7 @@ import { CurrentWeather } from 'src/app/interfaces/weather/current-weather';
 export enum WeatherActionsTypes {
   getCurrentWeatherRequestStarted = '[Weather API] GET_CURRENT_WEATHER_REQUEST_STARTED',
   getCurrentWeatherRequestSuccess = '[Weather API] GET_CURRENT_WEATHER_REQUEST_SUCCESS',
+  getCurrentWeatherRequestFailed = '[Weather API] GET_CURRENT_WEATHER_REQUEST_FAILED',
   updateSearchLocation = '[Search Location Component] UPDATE_SEARCH_LOCATION',
 }
 
@@ -14,6 +15,10 @@ export const getCurrentWeatherRequestStarted = createAction(
 export const getCurrentWeatherRequestSuccess = createAction(
   WeatherActionsTypes.getCurrentWeatherRequestSuccess,
   props<{ currentWeather: CurrentWeather }>()
+);
+
+export const getCurrentWeatherRequestFailed = createAction(
+  WeatherActionsTypes.getCurrentWeatherRequestFailed,
 );
 
 export const updateSearchLocation = createAction(

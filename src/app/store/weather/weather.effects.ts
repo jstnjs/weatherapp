@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { EMPTY } from 'rxjs';
-import { map, mergeMap, catchError, delay, withLatestFrom } from 'rxjs/operators';
+import { EMPTY, of } from 'rxjs';
+import {
+  map,
+  mergeMap,
+  catchError,
+  delay,
+  withLatestFrom,
+} from 'rxjs/operators';
 import { CurrentWeather } from 'src/app/interfaces/weather/current-weather';
 import { WeatherService } from 'src/app/services/weather.service';
 import {
+  getCurrentWeatherRequestFailed,
   getCurrentWeatherRequestStarted,
   getCurrentWeatherRequestSuccess,
 } from './weather.actions';
@@ -26,12 +33,12 @@ export class WeatherEffects {
       withLatestFrom(this.store.select(getLocation)),
       mergeMap(([action, location]) =>
         this.weatherService.getCurrentWeather(location).pipe(
-          delay(5000),
+          delay(1000),
           map((payload: CurrentWeather) => {
             return getCurrentWeatherRequestSuccess({ currentWeather: payload });
           }),
-          catchError((error: Error) => {
-            return EMPTY;
+          catchError(() => {
+            return of(getCurrentWeatherRequestFailed());
           })
         )
       )

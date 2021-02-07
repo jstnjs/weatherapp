@@ -17,3 +17,8 @@ export const isLoading = createSelector(
   getWeatherState,
   (state) => state.isLoading
 );
+
+export const getError = createSelector(
+  getWeatherState, 
+  (state) => state.error
+);
