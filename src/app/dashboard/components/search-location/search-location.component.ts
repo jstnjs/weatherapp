@@ -1,33 +1,30 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import {
-  getCurrentWeatherRequestStarted,
-  updateSearchLocation,
-} from 'src/app/store/weather/weather.actions';
+import { updateSearchLocation } from 'src/app/store/weather/weather.actions';
 import { getLocation } from 'src/app/store/weather/weather.selectors';
 import { WeatherState } from 'src/app/store/weather/weather.state';
 
 @Component({
-  selector: 'app-search-location',
-  templateUrl: './search-location.component.html',
-  styleUrls: ['./search-location.component.scss'],
+    selector: 'app-search-location',
+    templateUrl: './search-location.component.html',
+    styleUrls: ['./search-location.component.scss'],
 })
 export class SearchLocationComponent implements OnInit {
-  location$: Observable<string>;
-  @Output() submitLocation = new EventEmitter<void>();
+    @Output() submitLocation = new EventEmitter<void>();
+    location$: Observable<string>;
 
-  constructor(private store: Store<{ state: WeatherState }>) {
-    this.location$ = store.select(getLocation);
-  }
+    constructor(private store: Store<{ state: WeatherState }>) {
+        this.location$ = store.select(getLocation);
+    }
 
-  ngOnInit(): void {}
+    ngOnInit(): void {}
 
-  onInput(location: string): void {
-    this.store.dispatch(updateSearchLocation({ location }));
-  }
+    onInput(location: string): void {
+        this.store.dispatch(updateSearchLocation({ location }));
+    }
 
-  onSubmit() {
-    this.submitLocation.emit();
-  }
+    onSubmit(): void {
+        this.submitLocation.emit();
+    }
 }

@@ -4,26 +4,23 @@ import { WeatherState } from './weather.state';
 export const getWeatherState = createFeatureSelector<WeatherState>('weather');
 
 export const getCurrentWeather = createSelector(
-  getWeatherState,
-  (state) => state.currentWeather
+    getWeatherState,
+    (state) => state.currentWeather
 );
 
 export const getForecast = createSelector(
-  getWeatherState,
-  (state) => state.forecast
+    getWeatherState,
+    (state) => state.forecast
 );
 
 export const getLocation = createSelector(
-  getWeatherState,
-  (state) => state.location
+    getWeatherState,
+    (state) => state.location
 );
 
 export const isLoading = createSelector(
-  getWeatherState,
-  (state) => state.isLoading
+    getWeatherState,
+    (state) => state.isLoading
 );
 
-export const getError = createSelector(
-  getWeatherState, 
-  (state) => state.error
-);
+export const getError = createSelector(getWeatherState, (state) => state.error);

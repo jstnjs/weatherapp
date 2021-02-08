@@ -16,27 +16,29 @@ import { SearchLocationComponent } from './dashboard/components/search-location/
 import { FormsModule } from '@angular/forms';
 import { WeatherDetailsComponent } from './dashboard/components/weather-details/weather-details.component';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    ForecastComponent,
-    TodayComponent,
-    SearchLocationComponent,
-    WeatherDetailsComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
-    WeatherStoreModule,
-    FormsModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        DashboardComponent,
+        ForecastComponent,
+        TodayComponent,
+        SearchLocationComponent,
+        WeatherDetailsComponent,
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        StoreModule.forRoot({}, {}),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25,
+            logOnly: environment.production,
+        }),
+        EffectsModule.forRoot([]),
+        WeatherStoreModule,
+        FormsModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

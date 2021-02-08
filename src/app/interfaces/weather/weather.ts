@@ -1,7 +1,7 @@
-import { Clouds } from "./clouds"
-import { Main } from "./main";
-import { WeatherCondition } from "./weather-condition";
-import { Wind } from "./wind";
+import { Clouds } from './clouds';
+import { Main } from './main';
+import { WeatherCondition } from './weather-condition';
+import { Wind } from './wind';
 
 export interface Weather {
     weather: WeatherCondition[];

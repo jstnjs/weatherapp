@@ -6,24 +6,24 @@ import { CurrentWeatherResponse } from '../interfaces/responses/current-weather-
 import { ForecastResponse } from '../interfaces/responses/forecast-response';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class WeatherService {
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  getCurrentWeather(city: string): Observable<CurrentWeatherResponse> {
-    return this.http.get<CurrentWeatherResponse>(
-      `${environment.weatherApiUrl}/weather?q=${
-        city ? city : 'Amsterdam'
-      }&units=metric&lang=nl&appid=${environment.weatherApiKey}`
-    );
-  }
+    getCurrentWeather(city: string): Observable<CurrentWeatherResponse> {
+        return this.http.get<CurrentWeatherResponse>(
+            `${environment.weatherApiUrl}/weather?q=${
+                city ? city : 'Amsterdam'
+            }&units=metric&lang=nl&appid=${environment.weatherApiKey}`
+        );
+    }
 
-  getForecast(city: string): Observable<ForecastResponse> {
-    return this.http.get<ForecastResponse>(
-      `${environment.weatherApiUrl}/forecast?q=${
-        city ? city : 'Amsterdam'
-      }&cnt=30&units=metric&lang=nl&appid=${environment.weatherApiKey}`
-    );
-  }
+    getForecast(city: string): Observable<ForecastResponse> {
+        return this.http.get<ForecastResponse>(
+            `${environment.weatherApiUrl}/forecast?q=${
+                city ? city : 'Amsterdam'
+            }&cnt=30&units=metric&lang=nl&appid=${environment.weatherApiKey}`
+        );
+    }
 }

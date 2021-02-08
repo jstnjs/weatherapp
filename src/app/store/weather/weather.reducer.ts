@@ -1,4 +1,4 @@
-import { createReducer, on, Action } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import {
     getCurrentWeatherRequestFailed,
     getCurrentWeatherRequestStarted,
@@ -20,7 +20,7 @@ export const initialState: WeatherState = {
 
 export const weatherReducer = createReducer(
     initialState,
-    on(getCurrentWeatherRequestStarted, state => {
+    on(getCurrentWeatherRequestStarted, (state) => {
         return {
             ...state,
             isLoading: true,
@@ -41,7 +41,7 @@ export const weatherReducer = createReducer(
             error: 'Er is iets misgegaan, probeer het later opnieuw!',
         };
     }),
-    on(getForecastRequestStarted, state => {
+    on(getForecastRequestStarted, (state) => {
         return {
             ...state,
             isLoading: true,
@@ -61,11 +61,11 @@ export const weatherReducer = createReducer(
             isLoading: false,
             error: 'Er is iets misgegaan, probeer het later opnieuw!',
         };
-    }),     
+    }),
     on(updateSearchLocation, (state, { location }) => {
         return {
             ...state,
             location,
         };
-    }),
+    })
 );

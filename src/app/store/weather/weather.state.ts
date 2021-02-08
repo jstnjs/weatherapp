@@ -1,4 +1,4 @@
-import { Weather } from "src/app/interfaces/weather/weather";
+import { Weather } from 'src/app/interfaces/weather/weather';
 
 export interface WeatherState {
     isLoading: boolean;

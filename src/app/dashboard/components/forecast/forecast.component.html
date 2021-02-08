@@ -1,7 +1,10 @@
 <div *ngIf="(isLoading$ | async); else elseBlock">Loading......</div>
 <ng-template #elseBlock>
 
-    <div *ngIf="error$ | async as error; else highlights" class="bg-red-200 border-2 border-red-400 text-red-600 py-4 px-6 rounded">
+    <div 
+        *ngIf="error$ | async as error; else highlights" 
+        class="bg-red-200 border-2 border-red-400 text-red-600 py-4 px-6 rounded"
+    >
         {{ error }}
     </div>
 
@@ -9,17 +12,23 @@
         
         <div class="flex -mx-4 overflow-x-auto">
             <div 
-            *ngFor="let weather of forecast$ | async" 
-            (click)="onSelect(weather)"
-            class="px-4 mb-8">
+                *ngFor="let weather of forecast$ | async" 
+                (click)="onSelect(weather)"
+                class="px-4 mb-8"
+            >
+                
                 <div 
-                class="bg-white w-48 h-48 rounded-lg shadow-sm py-3 px-6 flex flex-col cursor-pointer"
-                [ngClass]="{'bg-blue-500 text-white': weather === selectedForecast}">
+                    class="bg-white w-48 h-48 rounded-lg shadow-sm py-3 px-6 flex flex-col cursor-pointer"
+                    [ngClass]="{'bg-blue-500 text-white': weather === selectedForecast}"
+                >
+
                     <div 
-                    [ngClass]="{'text-gray-400': weather !== selectedForecast}"
-                    class="font-semibold">
-                        {{ weather.dt * 1000 | date:'h:mm a, EEEE'}}
+                        [ngClass]="{'text-gray-400': weather !== selectedForecast}"
+                        class="font-semibold"
+                    >
+                            {{ weather.dt * 1000 | date:'h:mm a, EEEE'}}
                     </div>
+
                     <div class="text-3xl font-bold flex-1 flex items-center justify-center">
                         {{ weather.main.temp | number:'1.0-0' }}<sup>°C</sup>
                     </div>
@@ -28,8 +37,8 @@
         </div>
         
         <app-weather-details 
-        *ngIf="selectedForecast" 
-        [weatherDetail]="selectedForecast">
+            *ngIf="selectedForecast" 
+            [weatherDetail]="selectedForecast">
         </app-weather-details>
 
     </ng-template>

@@ -1,10 +1,10 @@
-import { Clouds } from "../weather/clouds";
-import { Coordinates } from "../weather/coordinates";
-import { Main } from "../weather/main";
-import { Sys } from "../weather/sys";
-import { Weather } from "../weather/weather";
-import { WeatherCondition } from "../weather/weather-condition";
-import { Wind } from "../weather/wind";
+import { Clouds } from '../weather/clouds';
+import { Coordinates } from '../weather/coordinates';
+import { Main } from '../weather/main';
+import { Sys } from '../weather/sys';
+import { Weather } from '../weather/weather';
+import { WeatherCondition } from '../weather/weather-condition';
+import { Wind } from '../weather/wind';
 
 export interface CurrentWeatherResponse {
     coord: Coordinates;
